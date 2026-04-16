@@ -1,0 +1,28 @@
+business_review:
+  description: > 
+    Generate a Comprehensive Restaurant Business Review, exclude any tripadvisor data.
+
+    inputs:
+      - restaurant (string): Name of the restaurant to be reviewed.
+
+  expected_output: >
+    - review (string): A detailed, one-page report analyzing the restaurant based on all available data and following the established reporting template.
+
+data_capture:
+  description: >
+    Collect Comprehensive Restaurant Data 
+
+      inputs:
+        - restaurant (string): Name of the restaurant for which data is required.
+
+      steps:
+        1. Use yelp_reviews_search_tool to gather reviews for {restaurant}.
+        2. Utilize the search_the_internet_tool with query parameter set to "{restaurant}" to find relevant online information, exclude any data that refers to tripadvisor.
+        3. Employ the review_analytics_tool with arguments "{restaurant}" and "{token}" to analyze reviews and extract key data.
+
+      **Important Notes:**
+        - Do not convert the restaurant name to uppercase during searches.  
+
+  expected_output: >
+    - data (dict): A comprehensive dictionary containing all collected data about the restaurant, including ratings and other relevant information.
+
